@@ -6,16 +6,25 @@ import openai
 import streamlit as st
 from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
-# make sure you specify .env
-OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
-# COHERE_API_KEY = os.environ["COHERE_API_KEY"]
-# GOOSEAI_API_KEY = os.environ["GOOSEAI_API_KEY"]
-# GPTJ_API_KEY = os.environ["GPTJ_API_KEY"]
-LABELSTUDIO_API_TOKEN = os.environ["LABELSTUDIO_API_TOKEN"]
-LABELSTUDIO_ENDPOINT = os.environ["LABELSTUDIO_ENDPOINT"]
-NGROK_API_ENDPOINT = os.environ["NGROK_API_ENDPOINT"]
+# # make sure you specify .env
+# OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+# # COHERE_API_KEY = os.environ["COHERE_API_KEY"]
+# # GOOSEAI_API_KEY = os.environ["GOOSEAI_API_KEY"]
+# # GPTJ_API_KEY = os.environ["GPTJ_API_KEY"]
+# LABELSTUDIO_API_TOKEN = os.environ["LABELSTUDIO_API_TOKEN"]
+# LABELSTUDIO_ENDPOINT = os.environ["LABELSTUDIO_ENDPOINT"]
+# NGROK_API_ENDPOINT = os.environ["NGROK_API_ENDPOINT"]
+
+# make sure you specify the secrets when running on streamlit cloud
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+# COHERE_API_KEY = st.secrets["COHERE_API_KEY"]
+# GOOSEAI_API_KEY = st.secrets["GOOSEAI_API_KEY"]
+# GPTJ_API_KEY = st.secrets["GPTJ_API_KEY"]
+LABELSTUDIO_API_TOKEN = st.secrets["LABELSTUDIO_API_TOKEN"]
+LABELSTUDIO_ENDPOINT = st.secrets["LABELSTUDIO_ENDPOINT"]
+NGROK_API_ENDPOINT = st.secrets["NGROK_API_ENDPOINT"]
 
 
 def openai_inference_request(input_text, max_tokens=25, temperature=0.9, number_of_completions=1):
