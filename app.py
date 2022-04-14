@@ -137,7 +137,7 @@ def main():
 
                     st.markdown(f"Model didn't detect any toxic content :)")
                 else:
-                    st.markdown(f"Model detected potential toxic content.")
+                    st.markdown(f"Model detected potentially toxic content.")
 
                     df = pd.DataFrame.from_dict(
                         dict(scores=predicted_scores, labels=predicted_labels)

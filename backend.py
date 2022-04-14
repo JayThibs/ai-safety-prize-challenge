@@ -15,6 +15,7 @@ OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 # GPTJ_API_KEY = os.environ["GPTJ_API_KEY"]
 LABELSTUDIO_API_TOKEN = os.environ["LABELSTUDIO_API_TOKEN"]
 LABELSTUDIO_ENDPOINT = os.environ["LABELSTUDIO_ENDPOINT"]
+NGROK_API_ENDPOINT = os.environ["NGROK_API_ENDPOINT"]
 
 
 def openai_inference_request(input_text, max_tokens=25, temperature=0.9, number_of_completions=1):
@@ -43,7 +44,7 @@ def openai_inference_request(input_text, max_tokens=25, temperature=0.9, number_
 def check_toxicity(completions):
     results = []
     for completion in completions:
-        url = "https://3ed0-35-185-109-155.ngrok.io/api"
+        url = NGROK_API_ENDPOINT
         payload = {"data": [[completion]]}
         headers = {"Content-Type": "application/json"}
         response = requests.request("POST", url, json=payload, headers=headers)
